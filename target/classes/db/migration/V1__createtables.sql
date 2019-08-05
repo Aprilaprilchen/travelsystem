@@ -22,7 +22,8 @@ CREATE TABLE hotel(
  name    VARCHAR(30),
  location   VARCHAR(150),
  price    NUMERIC(7, 2),
- comfort_level   INTEGER
+ comfort_level   INTEGER,
+ area_id int
 );
 ALTER TABLE hotel ADD CONSTRAINT hotel_pk PRIMARY KEY(id);
 
@@ -35,14 +36,15 @@ CREATE TABLE customer (
  email    VARCHAR(355) UNIQUE NOT NULL,
  age    int NOT NULL,
  budget    NUMERIC(10, 2),
- gender    CHAR(1)
+ gender    CHAR(1),
+ area_id int
 );
 ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY(id);
 ALTER TABLE customer
- ADD CONSTRAINT customer_area_fk FOREIGN KEY(id)
+ ADD CONSTRAINT customer_area_fk FOREIGN KEY(area_id)
   REFERENCES area(id);
 ALTER TABLE hotel
- ADD CONSTRAINT hotel_area_fk FOREIGN KEY(id)
+ ADD CONSTRAINT hotel_area_fk FOREIGN KEY(area_id)
   REFERENCES area(id);
 
 --select * from area

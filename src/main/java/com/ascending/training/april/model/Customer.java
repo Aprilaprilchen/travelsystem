@@ -12,7 +12,7 @@ public class Customer {
     private String email;
     private int age;
     private Number budget;
-    private char gender;
+    private String gender;
     private int area_id;
 
     public int getId(){
@@ -39,7 +39,7 @@ public class Customer {
     public Number getBudget(){
         return budget;
     }
-    public char getGender(){
+    public String getGender(){
         return gender;
     }
     public int getArea_id(){
@@ -70,7 +70,7 @@ public class Customer {
     public void setBudget(Number budget) {
         this.budget = budget;
     }
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
     public void setArea_id(int area_id) {

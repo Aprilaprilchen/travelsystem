@@ -9,14 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AreaDao {
+public class AreaDao{
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     static final String DB_URL = "jdbc:postgresql://localhost:5434/travel_db";
     static final String USER = "admin";
     static final String PASS = "travel123!";
 
-    public List<Area> getArea() {
+    public List<Area> getAreas() {
+        logger.info("Enter the method getArea");
+
         List<Area> areas = new ArrayList<>();
         Connection conn = null;
         Statement stmt = null;
@@ -50,10 +53,14 @@ public class AreaDao {
         }
 
         catch (Exception e) {
+            logger.error(e.getMessage());
+
             e.printStackTrace();
+
+            //logger.info("This is message 1");
         }
 
-        finally {
+        finally{
             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
@@ -63,20 +70,23 @@ public class AreaDao {
             }
         }
 
+        logger.trace("Trace - Area size = " + areas.size());
         logger.debug(String.format("The area %s was inserted into the table.", areas.toString()));
         logger.info(String.format("abs.", areas.toString()));
+        logger.warn("Trace - Area" + areas.size());
+        logger.error("Trace - Area" + areas.size());
 
-
+        logger.info("Exist the method getArea");
         return areas;
     }
 
     public static void main(String[] args) {
-        AreaDao areaDao = new AreaDao();
-        List<Area> areas = areaDao.getArea();
-
-        for (Area area : areas) {
-            System.out.println(area.getName());
-
-        }
+//        AreaDao areaDao = new AreaDao();
+//        List<Area> areas = areaDao.getArea();
+//
+//        for (Area area : areas) {
+//            System.out.println(area.getName());
+//
+//        }
     }
 }

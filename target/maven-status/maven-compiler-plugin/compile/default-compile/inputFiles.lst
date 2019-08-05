@@ -1,1 +1,7 @@
-/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/April/App.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/jdbc/HotelDao.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/App.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/model/Hotel.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/model/Area.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/jdbc/CustomerDao.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/jdbc/AreaDao.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/model/Customer.java

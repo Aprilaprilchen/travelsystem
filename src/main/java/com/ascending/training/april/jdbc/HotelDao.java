@@ -1,16 +1,22 @@
 package com.ascending.training.april.jdbc;
 
 import com.ascending.training.april.model.Hotel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelDao {static final String DB_URL = "jdbc:postgresql://localhost:5434/travel_db";
+public class HotelDao {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    static final String DB_URL = "jdbc:postgresql://localhost:5434/travel_db";
     static final String USER = "admin";
     static final String PASS = "travel123!";
 
-    public List<Hotel> getHotel() {
+    public List<Hotel> getHotels() {
         List<Hotel> hotels = new ArrayList<>();
         Connection conn = null;
         Statement stmt = null;
@@ -49,6 +55,8 @@ public class HotelDao {static final String DB_URL = "jdbc:postgresql://localhost
 
         catch (Exception e) {
             e.printStackTrace();
+
+            logger.info("This is an exception");
         }
 
         finally {
@@ -61,14 +69,16 @@ public class HotelDao {static final String DB_URL = "jdbc:postgresql://localhost
             }
         }
 
+        logger.warn("This is a message");
+
         return hotels;
     }
-    public static void main(String[] args) {
-        HotelDao hotelDao = new HotelDao();
-        List<Hotel> hotels = hotelDao.getHotel();
-
-        for (Hotel hotel : hotels) {
-        System.out.println(hotel.getName());
-        }
-    }
+//    public static void main(String[] args) {
+//        HotelDao hotelDao = new HotelDao();
+//        List<Hotel> hotels = hotelDao.getHotels();
+//
+//        for (Hotel hotel : hotels) {
+//        System.out.println(hotel.getName());
+//        }
+//    }
 }
