@@ -5,3 +5,4 @@
 /Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/jdbc/CustomerDao.java
 /Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/jdbc/AreaDao.java
 /Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/april/model/Customer.java
+/Users/april/IdeaProjects/travelsystem/src/main/java/com/ascending/training/util/HibernateUtil.java

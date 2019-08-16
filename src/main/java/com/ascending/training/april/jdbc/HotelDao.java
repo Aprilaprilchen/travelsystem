@@ -31,7 +31,7 @@ public class HotelDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM hotel";
+            sql = "SELECT * FROM hotels";
             rs = stmt.executeQuery(sql);
 
 //            Extract data from result set
@@ -40,15 +40,15 @@ public class HotelDao {
                 String name = rs.getString("name");
                 String location = rs.getString("location");
                 int price = rs.getInt("price");
-                int comfort_level = rs.getInt("comfort_level");
-                int area_id = rs.getInt("area_id");
+                int comfortLevel = rs.getInt("comfortLevel");
+                int areaId = rs.getInt("area_id");
 
                 Hotel hotel = new Hotel();
-                hotel.setId(id);
+//                hotel.setId(id);
                 hotel.setName(name);
                 hotel.setLocation(location);
                 hotel.setPrice(price);
-                hotel.setComfort_level(comfort_level);
+                hotel.setComfortLevel(comfortLevel);
                 hotels.add(hotel);
             }
         }
@@ -73,6 +73,29 @@ public class HotelDao {
 
         return hotels;
     }
+
+    public int deleteHotelByAreaId(long areaId){
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM hotels WHERE area_id = '" + areaId + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 //    public static void main(String[] args) {
 //        HotelDao hotelDao = new HotelDao();
 //        List<Hotel> hotels = hotelDao.getHotels();

@@ -31,32 +31,32 @@ public class CustomerDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM customer";
+            sql = "SELECT * FROM customers";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                Long id = rs.getLong("id");
                 String name = rs.getString("name");
-                String first_name = rs.getString("first_name");
-                String last_name = rs.getString("last_name");
+                String firstName = rs.getString("first_name");
+                String lastName = rs.getString("last_name");
                 String password = rs.getString("password");
                 String email = rs.getString("email");
                 int age = rs.getInt("age");
-                Number budget = rs.getInt("budget");
+                int budget = rs.getInt("budget");
                 String gender = rs.getString("gender");
-                int area_id = rs.getInt("area_id");
+                int areaId = rs.getInt("area_id");
 
                 Customer customer = new Customer();
-                customer.setId(id);
+//                customer.setId(id);
                 customer.setName(name);
-                customer.setFirst_name(first_name);
-                customer.setLast_name(last_name);
+                customer.setFirstName(firstName);
+                customer.setLastName(lastName);
                 customer.setPassword(password);
                 customer.setEmail(email);
                 customer.setAge(age);
                 customer.setGender(gender);
                 customer.setBudget(budget);
-                customer.setArea_id(area_id);
+//                customer.setAreaId(areaId);
                 customers.add(customer);
             }
 
@@ -79,14 +79,60 @@ public class CustomerDao {
 
         return (customers);
     }
-//
-//    public static void main(String[] args) {
-//        CustomerDao customerDao = new CustomerDao();
-//        List<Customer> customers = customerDao.getCustomer();
-//
-//        for (Customer customer : customers) {
-//        System.out.println(customer.getName());
-//        }
-//    }
+
+    public int deleteCustomerById(Customer customer){
+        long customerId = customer.getId();
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM customer WHERE id = '" + customerId + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public int deleteCustomerByAreaId(long areaId){
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM customer WHERE area_id = '" + areaId + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
+    public static void main(String[] args) {
+        CustomerDao customerDao = new CustomerDao();
+        List<Customer> customers = customerDao.getCustomers();
+
+        for (Customer customer : customers) {
+        System.out.println(customer.getName());
+        }
+    }
 }
 

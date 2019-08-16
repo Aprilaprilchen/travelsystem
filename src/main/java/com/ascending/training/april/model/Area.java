@@ -1,44 +1,82 @@
 package com.ascending.training.april.model;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "areas")
 public class Area {
-    private int id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "name")
     private String name;
-    private int comsumption_level;
+
+    @Column(name = "consumption_level")
+    private int consumptionLevel;
+
+    @Column(name = "location")
     private String location;
+
+    @Column(name = "description")
     private String description;
 
-    public int getId(){
+@OneToMany(mappedBy = "area", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Customer> customers;
+
+@OneToMany(mappedBy = "area", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Hotel> hotels;
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public List<Hotel> getHotels(){
+        return hotels;
+    }
+
+    public void setHotels(List<Hotel> hotels){
+        this.hotels = hotels;
+    }
+
+    public long getId(){
         return id;
     }
-    public String getName(){
 
+    public String getName(){
         return name;
     }
-    public int getComsumption_level(){
 
-        return comsumption_level;
+    public int getConsumptionLevel(){
+        return consumptionLevel;
     }
-    public String getLocation(){
 
+    public String getLocation(){
         return location;
     }
-    public String getDescription(){
 
+    public String getDescription(){
         return description;
     }
 
-    public void setId(int id){
-        this.id = id;
-    }
+
+//    public void setId(long id){
+//        this.id = id;
+//    }
+
     public void setName(String name){
 
         this.name = name;
     }
-    public void setComsumption_level(int comsumption_level){
+    public void setConsumptionLevel(int consumptionLevel){
 
-        this.comsumption_level = comsumption_level;
+        this.consumptionLevel = consumptionLevel;
     }
     public void setLocation(String location){
 

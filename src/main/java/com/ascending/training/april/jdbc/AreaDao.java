@@ -1,6 +1,8 @@
 package com.ascending.training.april.jdbc;
 
 import com.ascending.training.april.model.Area;
+import com.ascending.training.april.model.Customer;
+import com.sun.rowset.internal.InsertRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,27 +27,27 @@ public class AreaDao{
         Statement stmt = null;
         ResultSet rs = null;
 
-        try {
+         try {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM area";
+            sql = "SELECT * FROM areas";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                int comsumption_level = rs.getInt("comsumption_level");
+                int consumptionLevel = rs.getInt("consumption_level");
                 String location = rs.getString("location");
                 String description = rs.getString("description");
 
                 Area area = new Area();
-                area.setId(id);
+//                area.setId(id);
                 area.setName(name);
-                area.setComsumption_level(comsumption_level);
+                area.setConsumptionLevel(consumptionLevel);
                 area.setLocation(location);
                 area.setDescription(description);
                 areas.add(area);
@@ -70,16 +72,92 @@ public class AreaDao{
             }
         }
 
-        logger.trace("Trace - Area size = " + areas.size());
-        logger.debug(String.format("The area %s was inserted into the table.", areas.toString()));
-        logger.info(String.format("abs.", areas.toString()));
-        logger.warn("Trace - Area" + areas.size());
-        logger.error("Trace - Area" + areas.size());
+//        logger.trace("Trace - Area size = " + areas.size());
+//        logger.debug(String.format("The area %s was inserted into the table.", areas.toString()));
+//        logger.info(String.format("abs.", areas.toString()));
+//        logger.warn("Trace - Area" + areas.size());
+//        logger.error("Trace - Area" + areas.size());
 
         logger.info("Exist the method getArea");
         return areas;
     }
 
+//    insert data
+    public int insertAreas(Area areas) {
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try {
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "INSERT INTO areas(name, consumptionLevel, location, description) values ('"
+                + areas.getName() + "'," + areas.getConsumptionLevel() + "," +
+                    "'" + areas.getLocation() + "'," + "'" + areas.getDescription() + "'" + ")";
+            result = stmt.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+//    update data
+    public int updateArea(Area area){
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try {
+            System.out.println("Connecting to databae...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "UPDATE areas set name = '" + area.getName() + "'" + " where id = '" + area.getId() + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+//    delete data
+    public int deleteAreaById(long areaId){
+        CustomerDao customerDao = new CustomerDao();
+        customerDao.deleteCustomerByAreaId(areaId);
+        HotelDao hotelDao = new HotelDao();
+        hotelDao.deleteHotelByAreaId(areaId);
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM areas WHERE id = '" + areaId + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+        }
+
+//        原用来测试的main方法
     public static void main(String[] args) {
 //        AreaDao areaDao = new AreaDao();
 //        List<Area> areas = areaDao.getArea();
@@ -88,5 +166,6 @@ public class AreaDao{
 //            System.out.println(area.getName());
 //
 //        }
+
     }
 }

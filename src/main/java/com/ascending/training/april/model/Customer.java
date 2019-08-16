@@ -1,32 +1,68 @@
 package com.ascending.training.april.model;
 
-import java.awt.font.NumericShaper;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
-    private int id;
-    private String name;
-    private String first_name;
-    private String last_name;
-    private String password;
-    private String email;
-    private int age;
-    private Number budget;
-    private String gender;
-    private int area_id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
 
-    public int getId(){
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "budget")
+    private int budget;
+
+    @Column(name = "gender")
+    private String gender;
+
+//    @Column(name = "area_id")
+//    private long areaId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "area_id", referencedColumnName = "id")
+    private Area area;
+
+    public Area getArea(){
+        return area;
+    }
+    public void setArea(Area area){
+        this.area = area;
+    }
+
+    public long getId(){
         return id;
     }
     public String getName(){
         return name;
     }
-    public String getFirst_name(){
-        return first_name;
+
+    public String getFirstName() {
+        return firstName;
     }
-    public String getLast_name(){
-        return last_name;
+
+    public String getLastName() {
+        return lastName;
     }
+
     public String getPassword(){
         return password;
     }
@@ -36,27 +72,27 @@ public class Customer {
     public int getAge(){
         return age;
     }
-    public Number getBudget(){
+    public int getBudget(){
         return budget;
     }
     public String getGender(){
         return gender;
     }
-    public int getArea_id(){
-        return area_id;
-    }
+//    public long getAreaId(){
+//        return areaId;
+//    }
 
-    public void setId(int age) {
-        this.id = id;
-    }
+//    public void setId(long id) {
+//        this.id = id;
+//    }
     public void setName(String name) {
         this.name = name;
     }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
     public void setPassword(String password) {
         this.password = password;
@@ -67,13 +103,13 @@ public class Customer {
     public void setAge(int age) {
         this.age = age;
     }
-    public void setBudget(Number budget) {
+    public void setBudget(int budget) {
         this.budget = budget;
     }
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public void setArea_id(int area_id) {
-        this.area_id = area_id;
-    }
+//    public void setAreaId(long areaId) {
+//        this.areaId = areaId;
+//    }
 }

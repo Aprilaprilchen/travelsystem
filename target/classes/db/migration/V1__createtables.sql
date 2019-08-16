@@ -9,7 +9,7 @@ CREATE SEQUENCE hotel_id_seq START WITH 1;
 CREATE SEQUENCE customer_id_seq START WITH 1;
 
 CREATE TABLE area(
- id      INTEGER NOT NULL default nextval('area_id_seq'),
+ id      SERIAL NOT NULL,
  name     VARCHAR (30) UNIQUE NOT NULL,
  comsumption_level   INTEGER,
  location   VARCHAR(50),
@@ -18,7 +18,7 @@ CREATE TABLE area(
 ALTER TABLE area ADD CONSTRAINT area_pk PRIMARY KEY(id);
 
 CREATE TABLE hotel(
- id     INTEGER NOT NULL default nextval('hotel_id_seq'),
+ id     SERIAL NOT NULL,
  name    VARCHAR(30),
  location   VARCHAR(150),
  price    NUMERIC(7, 2),
@@ -28,7 +28,7 @@ CREATE TABLE hotel(
 ALTER TABLE hotel ADD CONSTRAINT hotel_pk PRIMARY KEY(id);
 
 CREATE TABLE customer (
- id     INTEGER NOT NULL default nextval('customer_id_seq'),
+ id     SERIAL NOT NULL,
  name    VARCHAR (50) UNIQUE NOT NULL,
  first_name  VARCHAR (50),
  last_name  VARCHAR (50),
