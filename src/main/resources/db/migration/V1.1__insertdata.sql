@@ -1,4 +1,4 @@
-insert into area(name, comsumption_level, location, description) values
+insert into area(name, consumption_level, location, description) values
 ('DC', '6', 'city', 'Washington District of Columbia'),
 ('VA', '4', 'country', 'Virginia'),
 ('Maryland', '3', 'mountain', 'Maryland'),

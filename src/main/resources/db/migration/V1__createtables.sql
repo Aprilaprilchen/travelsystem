@@ -11,7 +11,7 @@ CREATE SEQUENCE customer_id_seq START WITH 1;
 CREATE TABLE area(
  id      SERIAL NOT NULL,
  name     VARCHAR (30) UNIQUE NOT NULL,
- comsumption_level   INTEGER,
+ consumption_level   INTEGER,
  location   VARCHAR(50),
  description   VARCHAR(150)
 );
