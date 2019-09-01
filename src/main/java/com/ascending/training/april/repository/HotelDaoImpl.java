@@ -1,5 +1,6 @@
 package com.ascending.training.april.repository;
 
+import com.ascending.training.april.jdbc.AreaDao;
 import com.ascending.training.april.model.Area;
 import com.ascending.training.april.model.Hotel;
 import com.ascending.training.april.util.HibernateUtil;
@@ -10,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
@@ -39,6 +41,34 @@ public class HotelDaoImpl implements HotelDao{
         }
 
         if(isSuccess) {
+            logger.debug(String.format("The hotel %s was inserted into table", hotel.toString()));
+        }
+
+        return isSuccess;
+    }
+
+    @Override
+    public boolean save(Hotel hotel, String areaName){
+        Transaction transaction = null;
+        boolean isSuccess = true;
+        AreaDaoImpl areaDaoImpl = new AreaDaoImpl();
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+
+            Area area = areaDaoImpl.getAreaByName(areaName);
+            hotel.setArea(area);
+            session.save(hotel);
+            transaction.commit();
+        }catch (Exception e){
+            isSuccess = false;
+            if(transaction != null){
+                transaction.rollback();
+                logger.debug(e.getMessage());
+            }
+        }
+
+        if(isSuccess){
             logger.debug(String.format("The hotel %s was inserted into table", hotel.toString()));
         }
 

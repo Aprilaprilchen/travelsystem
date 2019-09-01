@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired AreaDao areaDao;
 
     @Override
     public boolean save(Customer customer, Area area){
@@ -25,6 +27,29 @@ public class CustomerDaoImpl implements CustomerDao {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
+            customer.setArea(area);
+            session.save(customer);
+
+            transaction.commit();
+        } catch (Exception e) {
+            isSuccess = false;
+            if (transaction != null) transaction.rollback();
+            logger.error(e.getMessage());
+        }
+
+        if (isSuccess) logger.debug(String.format("The area %s was inserted into the table", customer.toString()));
+
+        return isSuccess;
+    }
+
+    @Override
+    public boolean save(Customer customer, String areaName){
+        Transaction transaction = null;
+        boolean isSuccess = true;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Area area = areaDao.getAreaByName(areaName);
             customer.setArea(area);
             session.save(customer);
 

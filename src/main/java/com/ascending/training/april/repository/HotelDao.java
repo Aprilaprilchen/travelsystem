@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface HotelDao {
     boolean save(Hotel hotel, Area area);
+    boolean save(Hotel hotel, String areaName);
     boolean update(Hotel hotel);
     int delete(String hotelName);
     List<Hotel> getHotels();

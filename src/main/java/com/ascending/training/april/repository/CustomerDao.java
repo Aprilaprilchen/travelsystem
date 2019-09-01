@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface CustomerDao {
     boolean save(Customer customer, Area area);
+    boolean save(Customer customer, String areaName);
     boolean update(Customer customer);
     int delete(String customerName);
     List<Customer> getCustomers();

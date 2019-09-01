@@ -4,6 +4,7 @@ import com.ascending.training.april.model.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class HotelDao {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String location = rs.getString("location");
-                int price = rs.getInt("price");
+                BigDecimal price = rs.getBigDecimal("price");
                 int comfortLevel = rs.getInt("comfortLevel");
                 int areaId = rs.getInt("area_id");
 

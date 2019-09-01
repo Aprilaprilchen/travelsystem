@@ -3,6 +3,7 @@ package com.ascending.training.april.model;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "areas")
@@ -24,24 +25,24 @@ public class Area {
     private String description;
 
 @OneToMany(mappedBy = "area", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Customer> customers;
+    private Set<Customer> customers;
 
 @OneToMany(mappedBy = "area", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<Hotel> hotels;
+    private Set<Hotel> hotels;
 
-    public List<Customer> getCustomers() {
+    public Set<Customer> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(List<Customer> customers) {
+    public void setCustomers(Set<Customer> customers) {
         this.customers = customers;
     }
 
-    public List<Hotel> getHotels(){
+    public Set<Hotel> getHotels(){
         return hotels;
     }
 
-    public void setHotels(List<Hotel> hotels){
+    public void setHotels(Set<Hotel> hotels){
         this.hotels = hotels;
     }
 

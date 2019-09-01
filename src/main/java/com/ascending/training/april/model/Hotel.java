@@ -1,6 +1,9 @@
 package com.ascending.training.april.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "hotels")
@@ -16,9 +19,9 @@ public class Hotel {
     private String location;
 
     @Column(name = "price")
-    private int price;
+    private BigDecimal price;
 
-    @Column(name = "comfortLevel")
+    @Column(name = "comfort_level")
     private int comfortLevel;
 
     //@Column(name = "area_id")
@@ -28,6 +31,7 @@ public class Hotel {
         return id;
     }
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "area_id")
     private Area area;
@@ -48,7 +52,7 @@ public class Hotel {
         return location;
     }
 
-    public int getPrice(){
+    public BigDecimal getPrice(){
         return price;
     }
     public int getComfortLevel(){
@@ -67,10 +71,10 @@ public class Hotel {
     public void setLocation(String location){
         this.location = location;
     }
-    public void setPrice(int price){
+    public void setPrice(BigDecimal price){
         this.price = price;
     }
-    public void setComfortLevel(int comfort_level){
+    public void setComfortLevel(int comfortLevel){
         this.comfortLevel = comfortLevel;
     }
 //    public void setAreaId(long areaId){ this.areaId = areaId;

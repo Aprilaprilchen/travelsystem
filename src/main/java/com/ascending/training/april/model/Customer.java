@@ -1,5 +1,7 @@
 package com.ascending.training.april.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -37,6 +39,7 @@ public class Customer {
 //    @Column(name = "area_id")
 //    private long areaId;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "area_id", referencedColumnName = "id")
     private Area area;

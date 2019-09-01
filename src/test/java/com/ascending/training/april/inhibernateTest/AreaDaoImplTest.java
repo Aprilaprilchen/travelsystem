@@ -1,5 +1,6 @@
 package com.ascending.training.april.inhibernateTest;
 
+import com.ascending.training.april.jdbcTest.AreaDaoTest;
 import com.ascending.training.april.model.Area;
 import com.ascending.training.april.model.Customer;
 import com.ascending.training.april.repository.AreaDaoImpl;
@@ -8,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AreaDaoImplTest {
@@ -27,19 +29,50 @@ public class AreaDaoImplTest {
         System.out.println(result);
     }
 
+    @After
+    public void cleanup() {
+        try {
+            System.out.println("Enter Cleanup in AreaDaoTest...");
+            Area area1 = areaDaoImpl.getAreaByName("CCC");
+            if (area1 != null) {
+                areaDaoImpl.delete("CCC", "Downtown");
+                System.out.println("*** The record 'CCC' has been deleted!");
+            } else System.out.println("*** The record 'CCC' is null");
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            }
+
+        try{
+            Area area2 = areaDaoImpl.getAreaByName("GGG");
+            if (area2 != null) {
+                areaDaoImpl.delete("GGG", "Downtown");
+                System.out.println("The record 'GGG' has been deleted!");
+            } else System.out.println("The record 'GGG' is null");
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+//            areaDaoImpl = null;
+    }
+
+//    public static void main(String[] args) {
+//        AreaDaoTest a = new AreaDaoTest();
+//        a.cleanup();
+//    }
+
     @Test
     public void saveAreaTest(){
-        List<Area> areas = areaDaoImpl.getAreas();
-        String newName = "CCC";
-        String newNameIsNewName = a.getName();
-        Assert.assertEquals(newName, newNameIsNewName);
+        String addedAreaName = "CCC";
+        String actualAreaName = a.getName();
+        Assert.assertEquals(addedAreaName, actualAreaName);
     }
 
     @Test
-    public void updateAreaNameTest(){
-        int result = areaDaoImpl.updateAreaName(28, "FFF");
-        System.out.println(result);
-    }
+//    public void updateAreaNameTest(){
+//        int result = areaDaoImpl.updateAreaName(28, "FFF");
+//        System.out.println(result);
+//    }
 
 //    public void updateAreaTest(){
 //
@@ -50,21 +83,22 @@ public class AreaDaoImplTest {
 //    }
 
     public void updateTest(){
-        a.setName("EEE");
-        a.setConsumptionLevel(2);
-        a.setDescription("DCD");
-        a.setLocation("Urban");
-        Area b = areaDaoImpl.getAreaByName("DDD");
+//        a.setName("EEE");
+//        a.setConsumptionLevel(2);
+//        a.setDescription("DCD");
+//        a.setLocation("Urban");
+        Area b = areaDaoImpl.getAreaByName("CCC");
         b.setName("GGG");
         boolean result = areaDaoImpl.update(b);
         String expectedNewName = "GGG";
         String actualNewName = b.getName();
+        System.out.println(result);
         Assert.assertEquals(actualNewName, expectedNewName);
     }
 
     @Test
     public void deleteAreaByNameAndLocationTest(){
-        areaDaoImpl.delete("EEE", "Urban");
+        areaDaoImpl.delete("CCC", "Downtown");
         String deletedName = a.getName();
         Assert.assertNotNull(deletedName);
     }
@@ -87,22 +121,6 @@ public class AreaDaoImplTest {
         System.out.println(area);
         Assert.assertNotNull(area);
 
-    }
-
-    @After
-    public void cleanup(){
-        try{
-            System.out.println("Enter Cleanup...");
-            Area area = areaDaoImpl.getAreaByName("CCC" );
-            if(area != null){
-                areaDaoImpl.delete("CCC","Downtown");
-                System.out.println("The record has been deleted!");
-            }
-            else System.out.println("Area is null");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        areaDaoImpl = null;
     }
 
 }

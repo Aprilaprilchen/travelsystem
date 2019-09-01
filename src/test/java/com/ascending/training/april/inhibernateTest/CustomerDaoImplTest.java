@@ -19,7 +19,7 @@ public class CustomerDaoImplTest{
     public void init(){
         customerDaoImpl = new CustomerDaoImpl();
         areaDaoImpl = new AreaDaoImpl();
-        a = areaDaoImpl.getAreaByName("FFF");
+        a = areaDaoImpl.getAreaByName("VA");
 
         c = new Customer();
         c.setName("Taylor Swift");

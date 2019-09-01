@@ -14,19 +14,20 @@ public class AreaService {
     @Autowired
     private AreaDao areaDao;
 
-    boolean save(Area area){
+    public boolean save(Area area){
         return areaDao.save(area);
     }
-    int updateAreaName(long areaId, String areaName){
+    public int updateAreaName(long areaId, String areaName){
         return areaDao.updateAreaName(areaId, areaName);
     }
-    int delete(String areaName, String areaLocation){
+    public boolean update(Area area){return areaDao.update(area);}
+    public int delete(String areaName, String areaLocation){
         return areaDao.delete(areaName, areaLocation);
     }
-    List<Area> getAreas(){
+    public List<Area> getAreas(){
         return areaDao.getAreas();
     }
-    Area getAreaByName(String areaName){
+    public Area getAreaByName(String areaName){
         return areaDao.getAreaByName(areaName);
     }
 }

@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class HotelDaoImplTest {
@@ -23,11 +24,12 @@ public class HotelDaoImplTest {
     public void init(){
         hotelDaoimpl = new HotelDaoImpl();
         areaDaoimpl = new AreaDaoImpl();
+        BigDecimal bd = new BigDecimal(190);
         h = new Hotel();
         a = areaDaoimpl.getAreaByName("VA");
         h.setName("Home Hotel");
         h.setLocation("Urban");
-        h.setPrice(190);
+        h.setPrice(bd);
         h.setComfortLevel(4);
 
         boolean result = hotelDaoimpl.save(h, a);
@@ -59,10 +61,11 @@ public class HotelDaoImplTest {
 
     @Test
     public void updateHotelTest(){
-        h.setPrice(200);
+        BigDecimal bd = new BigDecimal(200);
+        h.setPrice(bd);
         boolean result = hotelDaoimpl.update(h);
-        int expectedPrice = 200;
-        int realPrice = h.getPrice();
+        BigDecimal expectedPrice = new BigDecimal(200);
+        BigDecimal realPrice = h.getPrice();
         Assert.assertEquals(expectedPrice, realPrice);
         System.out.println(result);
     }

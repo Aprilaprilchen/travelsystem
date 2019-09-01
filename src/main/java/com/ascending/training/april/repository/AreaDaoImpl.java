@@ -124,7 +124,7 @@ public class AreaDaoImpl implements AreaDao {
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
-            logger.error(e.getMessage());
+            logger.error(e.getMessage(), e);
         }
 
         return deletedCount;
@@ -133,7 +133,7 @@ public class AreaDaoImpl implements AreaDao {
 
     @Override
     public List<Area> getAreas() {
-        String hql = "FROM Area";
+        String hql = "FROM Area as a join fetch a.hotels join fetch a.customers";
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<Area>query = session.createQuery(hql);
             return query.list();
@@ -142,9 +142,11 @@ public class AreaDaoImpl implements AreaDao {
 
     @Override
     public Area getAreaByName (String areaName){
+        logger.info(String.format(">>>>>>>> area name: %s", areaName));
+
         if (areaName == null) return null;
 //        转换成小写
-        String hql = "FROM Area as area left join fetch area.customers where lower(area.name) = :name";
+        String hql = "FROM Area as a left join fetch a.hotels left join fetch a.customers where lower(a.name) = :name";
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<Area> query = session.createQuery(hql);
@@ -153,9 +155,12 @@ public class AreaDaoImpl implements AreaDao {
             Area area = query.uniqueResult();
             logger.debug(area.toString());
 
+            logger.info(String.format(">>>>>>>> The result: %s", area.getName()));
             return area;
         }
     }
+
+//    try catch模式会自动close session open session会建一个new session来用 也可以用getcurrentsession来代替
 
     public Area getAreaById (long areaId){
         if (areaId < 0) return null;

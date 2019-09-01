@@ -7,10 +7,11 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 //()里有{}代表array
 @Suite.SuiteClasses({
-        AreaDaoTest.class
-}
+        AreaDaoTest.class,
+        CustomerDaoTest.class,
+        HotelDaoTest.class
+})
 
-)
 public class TestAll {
 }
 

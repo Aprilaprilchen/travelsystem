@@ -27,7 +27,7 @@ public class HotelDaoTest {
             System.out.println(hotel.getName());
         }
 
-        int ExpectedNumOfHotel = 5;
+        int ExpectedNumOfHotel = 0;
         Assert.assertEquals(ExpectedNumOfHotel, hotels.size());
     }
 
