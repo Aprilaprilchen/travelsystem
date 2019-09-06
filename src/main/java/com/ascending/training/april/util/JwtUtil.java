@@ -58,9 +58,7 @@ public class JwtUtil {
     }
 
     public static Claims decodeJwtToken(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(DatatypeConverter.parseBase64Binary(SECRET_KEY))
-                .parseClaimsJws(token).getBody();
+        Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(SECRET_KEY)).parseClaimsJws(token).getBody();
         logger.debug("Claims: " + claims.toString());
         return claims;
     }

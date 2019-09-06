@@ -28,19 +28,25 @@ public class SecurityFilter implements Filter {
         if (statusCode == HttpServletResponse.SC_ACCEPTED) filterChain.doFilter(request, response);
         else ((HttpServletResponse)response).sendError(statusCode);
     }
+
+
+    @Override
     public void destroy() {
         // TODO Auto-generated method stub
     }
+
     private int authorization(HttpServletRequest req) {
         int statusCode = HttpServletResponse.SC_UNAUTHORIZED;
         String uri = req.getRequestURI();
         String verb = req.getMethod();
-        if (uri.equalsIgnoreCase(AUTH_URI)) return HttpServletResponse.SC_ACCEPTED;
+        if(uri.equalsIgnoreCase(AUTH_URI))return HttpServletResponse.SC_ACCEPTED;
+
         try {
             String token = req.getHeader("Authorization").replaceAll("^(.*?) ", "");
             if (token == null || token.isEmpty()) return statusCode;
             Claims claims = JwtUtil.decodeJwtToken(token);
             String allowedResources = "/";
+
             switch(verb) {
                 case "GET"    : allowedResources = (String)claims.get("allowedReadResources");   break;
                 case "POST"   : allowedResources = (String)claims.get("allowedCreateResources"); break;

@@ -33,6 +33,7 @@ public class Authentication {
             token = JwtUtil.generateToken(u);
         }
         catch (Exception e) {
+            e.printStackTrace();
             String msg = e.getMessage();
             if (msg == null) msg = "BAD REQUEST!";
             logger.error(msg);

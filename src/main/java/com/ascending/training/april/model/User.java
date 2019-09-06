@@ -175,4 +175,27 @@ public class User {
         }
         return str;
     }
+
+
+    public int hashcode(){
+        Objects.hash(name, email);
+
+        final int prime = 17;
+        int result = 1;
+        result = prime*result + name.hashCode();
+        result = prime*result + email.hashCode();
+
+        return result;
+    }
+
+//    public boolean equals(Object u){
+//        if (this == u)return true;
+//        if (this.getClass() != u.getClass()) return false;
+//
+//        User other = (User) u;
+//        if (!email.equals(other.email)) return false;
+//        if (!name.equals(other.name)) return false;
+//
+//        return true;
+//    }
 }
