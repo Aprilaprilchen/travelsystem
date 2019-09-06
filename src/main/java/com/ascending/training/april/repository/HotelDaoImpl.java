@@ -119,7 +119,7 @@ public class HotelDaoImpl implements HotelDao{
             }
 
             if(deleteCount != 0){
-                logger.debug(String.format("This hotel %s hotelName has already beend deleted", hotelName.toString()));
+                logger.debug(String.format("This hotel %s hotelName has already been deleted", hotelName.toString()));
             }
         }
 

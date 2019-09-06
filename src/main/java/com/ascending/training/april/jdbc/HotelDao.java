@@ -97,6 +97,29 @@ public class HotelDao {
         return result;
     }
 
+
+    public int deleteHotelByAreaName(String areaName){
+
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM hotels WHERE area_name = '" + areaName + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 //    public static void main(String[] args) {
 //        HotelDao hotelDao = new HotelDao();
 //        List<Hotel> hotels = hotelDao.getHotels();
