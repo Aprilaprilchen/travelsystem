@@ -1,68 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca5836ee-9d29-438e-a5a1-188711dbb7f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/AreaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/HotelController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/LogFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/SecurityFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/practice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/RoleDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/UserDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/util/JwtUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1.5__createnewtable.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1.6__insertnewdata.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1.7__alterpricetype.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/TestAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/init/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/init/AppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/jdbc/HotelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/jdbc/HotelDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Area.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/AreaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/AreaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/AreaDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/AreaDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/CustomerDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/CustomerDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/HotelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/HotelDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/HotelDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/HotelDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/AreaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/AreaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ascending/training/april/service/HotelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/AreaDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/AreaDaoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/CustomerDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/CustomerDaoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/HotelDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/inhibernateTest/HotelDaoImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/jdbcTest/HotelDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/jdbcTest/HotelDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/jdbcTest/TestAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/jdbcTest/TestAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/CustomerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/CustomerServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/HotelServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/HotelServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/TestAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ascending/training/april/service/TestAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/jdbc/HotelDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/jdbc/HotelDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Area.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Area.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/model/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/AreaDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/AreaDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/AreaDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/AreaDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/CustomerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/CustomerDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/CustomerDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/CustomerDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/HotelDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/HotelDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/HotelDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ascending/training/april/repository/HotelDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/AreaDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/AreaDaoImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/CustomerDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/CustomerDaoImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/HotelDaoImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/inhibernateTest/HotelDaoImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/jdbcTest/HotelDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/jdbcTest/HotelDaoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/jdbcTest/TestAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ascending/training/april/jdbcTest/TestAll.class" afterDir="false" />
-    </list>
+    <list default="true" id="ca5836ee-9d29-438e-a5a1-188711dbb7f1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,10 +19,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/SecurityFilter.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/LogFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="45" column="103" lean-forward="true" selection-start-line="45" selection-start-column="103" selection-end-line="45" selection-end-column="103" />
+            <state>
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,50 +31,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/AreaController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/SecurityFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#782#783#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
-                <element signature="e#1060#1061#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/controller/Authentication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/init/AppInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/LogFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="555">
+              <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -314,7 +213,51 @@
               <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="april" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="april" type="462c0819:PsiDirectoryNode" />
+              <item name="init" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="april" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="april" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="travelsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="migration" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="travelsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -467,10 +410,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.AppInitializer" />
+      <item itemvalue="Application.practice" />
       <item itemvalue="JUnit.AreaDaoImplTest.updateTest" />
       <item itemvalue="JUnit.TestAll" />
       <item itemvalue="JUnit.HotelDaoTest" />
-      <item itemvalue="Application.practice" />
     </list>
     <recent_temporary>
       <list>
@@ -528,8 +471,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="97" y="23" width="1355" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="57" y="23" width="1348" height="877" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="DB Browser" order="1" weight="0.32901752" />
@@ -539,7 +481,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Job Explorer" order="6" weight="0.32901752" />
       <window_info id="Designer" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.20182787" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.20290965" />
       <window_info id="Structure" order="9" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -681,50 +623,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-448">
-          <caret line="102" column="18" lean-forward="true" selection-end-line="177" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2555#2556#0" expanded="true" />
-            <element signature="e#2580#2581#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2641#2642#0" expanded="true" />
-            <element signature="e#2671#2672#0" expanded="true" />
-            <element signature="e#2698#2699#0" expanded="true" />
-            <element signature="e#2737#2738#0" expanded="true" />
-            <element signature="e#2769#2770#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#2834#2835#0" expanded="true" />
-            <element signature="e#2881#2882#0" expanded="true" />
-            <element signature="e#2948#2949#0" expanded="true" />
-            <element signature="e#2983#2984#0" expanded="true" />
-            <element signature="e#3015#3016#0" expanded="true" />
-            <element signature="e#3064#3065#0" expanded="true" />
-            <element signature="e#3106#3107#0" expanded="true" />
-            <element signature="e#3141#3142#0" expanded="true" />
-            <element signature="e#3173#3174#0" expanded="true" />
-            <element signature="e#3222#3223#0" expanded="true" />
-            <element signature="e#3264#3265#0" expanded="true" />
-            <element signature="e#3298#3299#0" expanded="true" />
-            <element signature="e#3329#3330#0" expanded="true" />
-            <element signature="e#3376#3377#0" expanded="true" />
-            <element signature="e#3416#3417#0" expanded="true" />
-            <element signature="e#3447#3448#0" expanded="true" />
-            <element signature="e#3475#3476#0" expanded="true" />
-            <element signature="e#3516#3517#0" expanded="true" />
-            <element signature="e#3550#3551#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3613#3614#0" expanded="true" />
-            <element signature="e#3658#3659#0" expanded="true" />
-            <element signature="e#3692#3693#0" expanded="true" />
-            <element signature="e#4161#4162#0" expanded="true" />
-            <element signature="e#4255#4256#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/model/Users.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -739,16 +638,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/RuleDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/RuleDaoImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/repository/RoleDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1130,8 +1020,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/LogFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state>
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1140,8 +1030,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ascending/training/april/filter/SecurityFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="45" column="103" lean-forward="true" selection-start-line="45" selection-start-column="103" selection-end-line="45" selection-end-column="103" />
+        <state relative-caret-position="555">
+          <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
