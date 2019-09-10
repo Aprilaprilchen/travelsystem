@@ -103,4 +103,7 @@ public class Area {
         return Objects.hash(id, name, location);
     }
 
+    public void setCustomers(long customerId, String customerEmail) {
+
+    }
 }

@@ -1,24 +1,34 @@
 package com.ascending.training.april.inhibernateTest;
 
+import com.ascending.training.april.init.AppInitializer;
 import com.ascending.training.april.model.Area;
 import com.ascending.training.april.model.Customer;
 import com.ascending.training.april.repository.AreaDaoImpl;
 import com.ascending.training.april.repository.CustomerDao;
 import com.ascending.training.april.repository.CustomerDaoImpl;
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes= AppInitializer.class)
 public class CustomerDaoImplTest{
+
+    @Autowired
     private CustomerDaoImpl customerDaoImpl;
+    @Autowired
     private AreaDaoImpl areaDaoImpl;
     private Customer c;
     private Area a;
 
     @Before
     public void init(){
-        customerDaoImpl = new CustomerDaoImpl();
-        areaDaoImpl = new AreaDaoImpl();
+//        customerDaoImpl = new CustomerDaoImpl();
+//        areaDaoImpl = new AreaDaoImpl();
         a = areaDaoImpl.getAreaByName("VA");
 
         c = new Customer();

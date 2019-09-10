@@ -19,11 +19,12 @@ import java.util.List;
 @SpringBootTest(classes= AppInitializer.class)
 public class AreaServiceTest {
 
+    @Autowired Logger logger;
     @Autowired
     private AreaService areaService;
     private Area a;
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Before
     public void init(){
@@ -35,6 +36,7 @@ public class AreaServiceTest {
         a.setLocation("Downtown");
 
         boolean result =  areaService.save(a);
+        logger.info("111111");
         System.out.println(result);
     }
 

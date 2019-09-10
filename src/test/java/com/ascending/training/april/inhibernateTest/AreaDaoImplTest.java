@@ -1,29 +1,39 @@
 package com.ascending.training.april.inhibernateTest;
 
+import com.ascending.training.april.init.AppInitializer;
 import com.ascending.training.april.jdbcTest.AreaDaoTest;
 import com.ascending.training.april.model.Area;
 import com.ascending.training.april.model.Customer;
 import com.ascending.training.april.repository.AreaDaoImpl;
+import com.ascending.training.april.service.AreaService;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes= AppInitializer.class)
 public class AreaDaoImplTest {
+    @Autowired
     private AreaDaoImpl areaDaoImpl;
     private Area a;
 
     @Before
     public void init(){
-        areaDaoImpl = new AreaDaoImpl();
+        //areaDaoImpl = new AreaDaoImpl();
         a = new Area();
         a.setName("CCC");
         a.setConsumptionLevel(4);
         a.setDescription("Crowded of Customers");
         a.setLocation("Downtown");
+//        a.setCustomers();
 
         boolean result =  areaDaoImpl.save(a);
         System.out.println(result);

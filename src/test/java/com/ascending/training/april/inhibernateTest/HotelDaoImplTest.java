@@ -1,5 +1,6 @@
 package com.ascending.training.april.inhibernateTest;
 
+import com.ascending.training.april.init.AppInitializer;
 import com.ascending.training.april.model.Area;
 import com.ascending.training.april.model.Customer;
 import com.ascending.training.april.model.Hotel;
@@ -10,20 +11,29 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes= AppInitializer.class)
 public class HotelDaoImplTest {
+
+    @Autowired
     private HotelDaoImpl hotelDaoimpl;
+    @Autowired
     private AreaDaoImpl areaDaoimpl;
     private Hotel h;
     private Area a;
 
     @Before
     public void init(){
-        hotelDaoimpl = new HotelDaoImpl();
-        areaDaoimpl = new AreaDaoImpl();
+//        hotelDaoimpl = new HotelDaoImpl();
+//        areaDaoimpl = new AreaDaoImpl();
         BigDecimal bd = new BigDecimal(190);
         h = new Hotel();
         a = areaDaoimpl.getAreaByName("VA");
