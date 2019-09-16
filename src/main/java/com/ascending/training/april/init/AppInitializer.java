@@ -23,6 +23,7 @@ public class AppInitializer {
         SpringApplication.run(AppInitializer.class, args);
     }
 
+//    s3
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Logger logger(InjectionPoint injectionPoint){
@@ -39,6 +40,7 @@ public class AppInitializer {
                 .build();
     }
 
+//    sqs
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public AmazonSQS getAmazonSQS(){

@@ -35,7 +35,7 @@ public class CustomerDao {
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                Long id = rs.getLong("id");
+                long id = rs.getLong("id");
                 String name = rs.getString("name");
                 String firstName = rs.getString("first_name");
                 String lastName = rs.getString("last_name");
