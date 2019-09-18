@@ -17,6 +17,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <flyway.version>6.0.0-beta2</flyway.version>
+    <mockito.version>3.0.0</mockito.version>
   </properties>
 
   <parent>
@@ -57,6 +58,11 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>3.0.0</version>
     </dependency>
 <!--    <dependency>-->
 <!--      <groupId>org.slf4j</groupId>-->

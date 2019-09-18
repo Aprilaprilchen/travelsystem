@@ -110,7 +110,7 @@ public class FileService {
 
     public boolean deleteFile(String bucketName, String fileName) {
         boolean isSuccess = false;
-        File file = new File(fileName);
+//        File file = new File(fileName);
 
         try {
             if (amazonS3.doesBucketExistV2(bucketName)) {

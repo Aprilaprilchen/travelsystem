@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,25 @@ public class MessageService {
         return amazonSQS.getQueueUrl(queueName).getQueueUrl();
     }
 
+    public List listQueue(){
+        List list = new ArrayList();
+        try {
+            ListQueuesResult listQueuesResult = amazonSQS.listQueues();
+            list = listQueuesResult.getQueueUrls();
+        }catch (Exception e){
+            list = null;
+        }
+        return list;
+    }
+
+    public void deleteQueue(String queueName){
+        try{
+        amazonSQS.deleteQueue(queueName);
+        }catch(QueueDoesNotExistException e){
+            logger.info(String.format("This queue %s does not exist", queueName));
+        }
+    }
+
     public void sendMessage(String queueName, String msg){
         Map<String, MessageAttributeValue> messageAttributes = new HashMap<>();
         MessageAttributeValue messageAttributeValue = new MessageAttributeValue();
@@ -49,5 +69,9 @@ public class MessageService {
         ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(queueUrl);
         List<Message> messages = amazonSQS.receiveMessage(receiveMessageRequest).getMessages();
         return messages;
+    }
+
+    public void deleteMessage(String queueName, String msg){
+
     }
 }
