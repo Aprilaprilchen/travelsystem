@@ -35,6 +35,7 @@ public class FileServiceMockAWSTest {
 
     @Mock(answer = Answers.RETURNS_DEEP_STUBS) private AmazonS3 amazonS3;
     @Autowired @Spy private Logger logger;
+//    InjectMocks means the amazon S3 in fileService is injected with mocked not inject beans.
     @InjectMocks private FileService fileService;
 
     private String bucketName = "com_training_ascending_april_test";
@@ -72,5 +73,5 @@ public class FileServiceMockAWSTest {
         assertEquals(fileUrl, fakeFileUrl.toString());
         verify(amazonS3, times(1)).generatePresignedUrl(any());
     }
-    Object
+
 }
