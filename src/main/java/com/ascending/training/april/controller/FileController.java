@@ -47,6 +47,7 @@ public class FileController {
         }
         return responseEntity;
     }
+
     @RequestMapping(value = "/{fileName}", method = RequestMethod.GET, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Object> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         Resource resource = null;
