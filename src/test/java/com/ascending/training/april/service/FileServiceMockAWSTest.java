@@ -106,8 +106,6 @@ public class FileServiceMockAWSTest {
 
     @Test
     public void uploadFile()throws IOException{
-//        when(amazonS3.putObject(any())).thenReturn(putObjectResult);
-        //ObjectMetadata objectMetadata = new ObjectMetadata();
         when(amazonS3.doesObjectExist(bucketName, multipartFile.getOriginalFilename())).thenReturn(false);
         String url = fileService.uploadFile(bucketName, multipartFile);
         Assert.assertNotNull(url);
