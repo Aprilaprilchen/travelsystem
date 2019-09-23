@@ -28,7 +28,7 @@ public class MessageServiceMockAWSTest {
     @Autowired @Spy Logger logger;
     @InjectMocks MessageService messageService;
     String queueName = "cytsocute";
-    String queueUrl;
+    String queueUrl = "http://this.is.a.fake.url.com";
     ListQueuesResult listQueuesResult = new ListQueuesResult();
     String msg = "This is a message";
     List<Message> list= new ArrayList<>();
@@ -46,9 +46,9 @@ public class MessageServiceMockAWSTest {
 
     @Test
     public void createQueue(){
-        when(messageService.getQueueUrl(queueName)).thenReturn(queueUrl);
+        when(amazonSQS.getQueueUrl(queueName).getQueueUrl()).thenThrow(new QueueDoesNotExistException(""));
         messageService.createQueue(queueName);
-        verify(amazonSQS, times(1)).createQueue(anyString());
+        verify(amazonSQS, times(1)).createQueue(any(CreateQueueRequest.class));
     }
 
     @Test
@@ -72,9 +72,8 @@ public class MessageServiceMockAWSTest {
 
     @Test
     public void sendMessage(){
-        SendMessageRequest sendMessageRequest = new SendMessageRequest();
         messageService.sendMessage(queueName, msg);
-        verify(amazonSQS, times(1)).sendMessage(sendMessageRequest);
+        verify(amazonSQS, times(1)).sendMessage(any(SendMessageRequest.class));
     }
 
     @Test
