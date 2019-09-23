@@ -24,13 +24,13 @@ public class AppInitializer extends SpringBootServletInitializer {
         SpringApplication.run(AppInitializer.class, args);
     }
 
-//    s3
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Logger logger(InjectionPoint injectionPoint){
         return LoggerFactory.getLogger(injectionPoint.getMember().getClass());
     }
 
+    //    s3
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public AmazonS3 getAmazonS3(){
