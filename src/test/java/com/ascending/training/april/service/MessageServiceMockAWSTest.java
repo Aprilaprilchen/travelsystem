@@ -46,7 +46,7 @@ public class MessageServiceMockAWSTest {
 
     @Test
     public void createQueue(){
-        when(amazonSQS.getQueueUrl(queueName).getQueueUrl()).thenThrow(new QueueDoesNotExistException(""));
+        when(amazonSQS.getQueueUrl(queueName).getQueueUrl()).thenThrow(new QueueDoesNotExistException("This queue does not exist"));
         messageService.createQueue(queueName);
         verify(amazonSQS, times(1)).createQueue(any(CreateQueueRequest.class));
     }
