@@ -69,6 +69,8 @@ public class FileService {
         return getFileUrl(bucketName, file.getOriginalFilename());
     }
 
+//    public String uploadFile(String bucketName, )
+
     //    fileName is key
     public String getFileUrl(String bucketName, String fileName) {
         LocalDateTime expiration = LocalDateTime.now().plusDays(3);
