@@ -21,6 +21,7 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class FileService {
@@ -53,14 +54,16 @@ public class FileService {
 //    upload from local to S3
     public String uploadFile(String bucketName, MultipartFile file) throws IOException {
         try {
-            if (amazonS3.doesObjectExist(bucketName, file.getOriginalFilename())) {
+            UUID uuid = UUID.randomUUID();
+
+            if (amazonS3.doesObjectExist(bucketName, file.getOriginalFilename()+"_"+uuid)) {
                 logger.info(String.format("The file '%s' exists in the bucket %s", file.getOriginalFilename(), bucketName));
                 return null;
             }
             ObjectMetadata objectMetadata = new ObjectMetadata();
             objectMetadata.setContentType(file.getContentType());
             objectMetadata.setContentLength(file.getSize());
-            amazonS3.putObject(bucketName, file.getOriginalFilename(), file.getInputStream(), objectMetadata);
+            amazonS3.putObject(bucketName, file.getOriginalFilename()+"_"+uuid, file.getInputStream(), objectMetadata);
             logger.info(String.format("The file name=%s, size=%d was uploaded to bucket %s", file.getOriginalFilename(), file.getSize(), bucketName));
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -127,5 +130,11 @@ public class FileService {
             e.printStackTrace();
         }
         return isSuccess;
+    }
+
+    public void changeFileName(String bucketName, String fileName){
+            ObjectListing list = listObjects(bucketName);
+            List<S3ObjectSummary> objectSummaries = list.getObjectSummaries();
+            int i = objectSummaries.size();
     }
 }

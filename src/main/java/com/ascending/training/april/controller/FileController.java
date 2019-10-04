@@ -28,6 +28,7 @@ public class FileController {
 
     @RequestMapping(value = "/{bucketName}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity uploadFile(@PathVariable String bucketName, @RequestParam("file") MultipartFile file) {
+        logger.info(file.getOriginalFilename());
         String msg = String.format("The file name=%s, size=%d could not be uploaded.", file.getOriginalFilename(), file.getSize());
         ResponseEntity responseEntity = ResponseEntity.status(HttpServletResponse.SC_NOT_ACCEPTABLE).body(msg);
         try {
@@ -40,10 +41,37 @@ public class FileController {
                 responseEntity = ResponseEntity.status(HttpServletResponse.SC_OK).body(msg);
             }
             logger.info(msg);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             responseEntity = ResponseEntity.status(HttpServletResponse.SC_NOT_ACCEPTABLE).body(e.getMessage());
             logger.error(e.getMessage());
+        }
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/multi/{bucketName}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity uploadFile(@PathVariable String bucketName, @RequestParam("file") MultipartFile[] file) {
+        String msg = "initializing...";
+        ResponseEntity responseEntity = ResponseEntity.status(HttpServletResponse.SC_NO_CONTENT).body(msg);
+        for (int i = 0; i < file.length; i++) {
+            logger.info(file[i].getOriginalFilename());
+
+            msg = String.format("The file name=%s, size=%d could not be uploaded.", file[i].getOriginalFilename(), file[i].getSize());
+            responseEntity = ResponseEntity.status(HttpServletResponse.SC_NOT_ACCEPTABLE).body(msg);
+            try {
+                String path = System.getProperty("user.dir") + File.separator + "temp";
+                fileService.saveFile(file[i], path);
+                String url = fileService.uploadFile(bucketName, file[i]);
+                if (url != null) {
+                    System.out.println(">>>>>>>>>>>>>>>>>>>start...<<<<<<<<<<<<<<<<<<<<<");
+                    msg = String.format("The file name=%s, size=%d was uploaded, url=%s", file[i].getOriginalFilename(), file[i].getSize(), url);
+                    messageService.sendMessage(queueName, url);
+                    responseEntity = ResponseEntity.status(HttpServletResponse.SC_OK).body(msg);
+                }
+                logger.info(msg);
+            } catch (Exception e) {
+                responseEntity = ResponseEntity.status(HttpServletResponse.SC_NOT_ACCEPTABLE).body(e.getMessage());
+                logger.error(e.getMessage());
+            }
         }
         return responseEntity;
     }
@@ -59,7 +87,7 @@ public class FileController {
             if(!resource.exists()) return ResponseEntity.status(HttpServletResponse.SC_NOT_FOUND).body(msg);
             responseEntity = ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                    .body(resource);;
+                    .body(resource);
             msg = String.format("The file %s was downloaded", resource.getFilename());
             //Send message to SQS
             messageService.sendMessage(queueName, msg);
