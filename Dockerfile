@@ -1,0 +1,7 @@
+FROM maven:3.6.0-jdk-8
+
+ENV DB_URL = ""
+ENV DB_PORT = ""
+ENV DB_NAME = ""
+ENV DB_USER = ""
+ENV DB_PASSWORD = ""
