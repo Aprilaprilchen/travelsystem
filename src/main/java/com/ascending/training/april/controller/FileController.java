@@ -62,7 +62,7 @@ public class FileController {
                 fileService.saveFile(file[i], path);
                 String url = fileService.uploadFile(bucketName, file[i]);
                 if (url != null) {
-                    System.out.println(">>>>>>>>>>>>>>>>>>>start...<<<<<<<<<<<<<<<<<<<<<");
+                    System.out.println(">>>>>>>>>>>>>>>>>>>start...<<<<<<<<<<<<<<<<<<<<");
                     msg = String.format("The file name=%s, size=%d was uploaded, url=%s", file[i].getOriginalFilename(), file[i].getSize(), url);
                     messageService.sendMessage(queueName, url);
                     responseEntity = ResponseEntity.status(HttpServletResponse.SC_OK).body(msg);
