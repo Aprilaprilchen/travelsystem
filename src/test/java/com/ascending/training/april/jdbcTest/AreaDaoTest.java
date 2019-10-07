@@ -24,7 +24,7 @@ public class AreaDaoTest {
             System.out.println(area.getName());
         }
 
-        int expectedNumOfArea = 5;
+        int expectedNumOfArea = 6;
         Assert.assertEquals(expectedNumOfArea, areas.size());
 
     }
