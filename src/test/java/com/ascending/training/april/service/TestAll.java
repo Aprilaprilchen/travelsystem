@@ -7,7 +7,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
                 AreaServiceTest.class,
                 CustomerServiceTest.class,
-                HotelServiceTest.class
+                HotelServiceTest.class,
+                FileServiceTest.class,
+                MessageService.class
                 })
 
 public class TestAll {
