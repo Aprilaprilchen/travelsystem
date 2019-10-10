@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
                 CustomerServiceTest.class,
                 HotelServiceTest.class,
                 FileServiceTest.class,
-                MessageService.class
+                MessageServiceTest.class
                 })
 
 public class TestAll {

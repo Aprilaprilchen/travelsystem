@@ -25,7 +25,7 @@ public class MessageService {
         }catch (QueueDoesNotExistException e){
             CreateQueueRequest createQueueRequest = new CreateQueueRequest(queueName);
             queueUrl = amazonSQS.createQueue(createQueueRequest).getQueueUrl();
-            amazonSQS.createQueue(queueName);
+            //amazonSQS.createQueue(queueName);
         }
         return queueUrl;
     }
@@ -67,8 +67,8 @@ public class MessageService {
 
     public List<Message> getMessage(String queueName){
         String queueUrl = getQueueUrl(queueName);
-        ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(queueUrl).withWaitTimeSeconds(10)
-                .withMaxNumberOfMessages(10);
+        ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(queueUrl).withMaxNumberOfMessages(10);
+//                withWaitTimeSeconds(10)
         List<Message> messages = amazonSQS.receiveMessage(receiveMessageRequest).getMessages();
         return messages;
     }

@@ -4,6 +4,7 @@ import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
 import com.amazonaws.services.sqs.model.Message;
+import com.amazonaws.services.sqs.model.QueueDoesNotExistException;
 import com.ascending.training.april.init.AppInitializer;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -33,7 +34,14 @@ public class MessageServiceTest {
     List<Message> messages = new ArrayList<>();
 
     @Before
-    public void setUp(){
+    public void setUp() throws InterruptedException {
+        //sleep(60*1000);
+
+        try{
+            messageService.getQueueUrl(queueName);
+        }catch (QueueDoesNotExistException e){
+            messageService.createQueue(queueName);
+        }
 //        try {
 //            sleep(50 * 1000);
 //        } catch (InterruptedException e) {}
@@ -48,8 +56,8 @@ public class MessageServiceTest {
     }
 
     @Test
-    public void createQueue(){
-        url = messageService.createQueue(queueName);
+    public void createQueue()throws InterruptedException{
+        sleep(60*1000);
         url = messageService.getQueueUrl(queueName);
         System.out.println(String.format(">>>>>>>>>> This Queue %s has been initialized <<<<<<<<<<", queueName));
         Assert.assertNotNull(url);
@@ -63,12 +71,6 @@ public class MessageServiceTest {
             System.out.println(list.get(i));
         }
         Assert.assertNotNull(list);
-    }
-
-    @Test
-    public void deleteQueue(){
-        messageService.deleteQueue(queueName);
-        Assert.assertNull(url);
     }
 
     @Test
@@ -90,6 +92,13 @@ public class MessageServiceTest {
     @Test
     public void deleteMessage(){
         messageService.deleteMessage(queueName, msg);
+        messageService.deleteMessage(queueName, msg2);
+    }
 
+    @Test
+    public void deleteQueue()throws InterruptedException{
+        messageService.deleteQueue(queueName);
+        Assert.assertNull(url);
+        sleep(70*1000);
     }
 }
