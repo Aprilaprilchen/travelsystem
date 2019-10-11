@@ -15,11 +15,8 @@ public class HotelDao {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     static final String DB_URL = System.getProperty("database.url");
-//            "jdbc:postgresql://localhost:5434/travel_db";
     static final String USER = System.getProperty("database.user");
-//        "admin";
     static final String PASS = System.getProperty("database.password");
-//        "travel123!";
 
     public List<Hotel> getHotels() {
         List<Hotel> hotels = new ArrayList<>();

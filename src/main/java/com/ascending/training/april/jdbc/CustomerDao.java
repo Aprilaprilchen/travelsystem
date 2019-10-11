@@ -14,9 +14,9 @@ import java.util.List;
 public class CustomerDao {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    static final String DB_URL = "jdbc:postgresql://localhost:5434/travel_db";
-    static final String USER = "admin";
-    static final String PASS = "travel123!";
+    static final String DB_URL = System.getProperty("database.url");
+    static final String USER = System.getProperty("database.user");
+    static final String PASS = System.getProperty("database.password");
 
     public List<Customer> getCustomers() {
         List<Customer> customers = new ArrayList<>();

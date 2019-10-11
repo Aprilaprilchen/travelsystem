@@ -16,11 +16,8 @@ public class AreaDao{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     static final String DB_URL = System.getProperty("database.url");
-//    "jdbc:postgresql://localhost:5434/travel_db";
     static final String USER = System.getProperty("database.user");
-//        "admin";
     static final String PASS = System.getProperty("database.password");
-//        "travel123!";
 
     public List<Area> getAreas() {
         logger.info("Enter the method getArea");
@@ -36,12 +33,13 @@ public class AreaDao{
 
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
+
             String sql;
             sql = "SELECT * FROM areas";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                long id = rs.getLong("id");
                 String name = rs.getString("name");
                 int consumptionLevel = rs.getInt("consumption_level");
                 String location = rs.getString("location");
@@ -55,17 +53,11 @@ public class AreaDao{
                 area.setDescription(description);
                 areas.add(area);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
-
             e.printStackTrace();
-
             //logger.info("This is message 1");
-        }
-
-        finally{
+        } finally{
             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
@@ -83,6 +75,40 @@ public class AreaDao{
 
         logger.info("Exist the method getArea");
         return areas;
+    }
+
+    public Area getAreaByName(String areaName){
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        Area area = new Area();
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            String sql;
+            sql = "SELECT FROM areas WHERE name = '" + areaName + "'";
+            rs = stmt.executeQuery(sql);
+
+            long id = rs.getLong("id");
+            String name = rs.getString("name");
+            int consumptionLevel = rs.getInt("consumption_level");
+            String location = rs.getString("location");
+            String description = rs.getString("description");
+
+            area.setName(name);
+            area.setConsumptionLevel(consumptionLevel);
+            area.setLocation(location);
+            area.setDescription(description);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return area;
     }
 
 //    insert data
@@ -160,6 +186,7 @@ public class AreaDao{
         return result;
         }
 
+
 //        原用来测试的main方法
     public static void main(String[] args) {
 //        AreaDao areaDao = new AreaDao();
@@ -169,6 +196,5 @@ public class AreaDao{
 //            System.out.println(area.getName());
 //
 //        }
-
     }
 }

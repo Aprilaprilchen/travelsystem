@@ -24,9 +24,14 @@ public class AreaDaoTest {
             System.out.println(area.getName());
         }
 
-        int expectedNumOfArea = 6;
+        int expectedNumOfArea = 4;
         Assert.assertEquals(expectedNumOfArea, areas.size());
+    }
 
+    @Test
+    public void getAreaByNameTest(){
+        Area area = areaDao.getAreaByName("DC");
+        Assert.assertNotNull(area);
     }
 
     @Test
@@ -38,19 +43,25 @@ public class AreaDaoTest {
         va.setName("VA");
         //va.setId(100);
         areaDao.insertAreas(va);
+        Area area = areaDao.getAreaByName("VA");
+        Assert.assertNotNull(area);
     }
 
     @Test
     public void updateAreaTest(){
-        Area area2 = new Area();
-        area2.setName("DDD");
+        Area area = new Area();
+        area.setName("DDD");
 //        area2.setId(2);
-        areaDao.updateArea(area2);
+        areaDao.updateArea(area);
+        Area area2 = areaDao.getAreaByName("DDD");
+        Assert.assertNotNull(area2);
     }
 
     @Test
     public void deleteAreaByIdTest(){
         areaDao.deleteAreaById(1);
+        List<Area> areas = areaDao.getAreas();
+        Assert.assertEquals(6, areas.size());
     }
 
     @After
