@@ -61,7 +61,7 @@ public class AreaDaoTest {
     public void deleteAreaByIdTest(){
         areaDao.deleteAreaById(1);
         List<Area> areas = areaDao.getAreas();
-        Assert.assertEquals(6, areas.size());
+        Assert.assertEquals(4, areas.size());
     }
 
     @After
