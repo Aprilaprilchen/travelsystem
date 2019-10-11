@@ -1,5 +1,6 @@
 package com.ascending.training.april.jdbc;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.ascending.training.april.model.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +14,12 @@ public class HotelDao {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    static final String DB_URL = "jdbc:postgresql://localhost:5434/travel_db";
-    static final String USER = "admin";
-    static final String PASS = "travel123!";
+    static final String DB_URL = System.getProperty("database.url");
+//            "jdbc:postgresql://localhost:5434/travel_db";
+    static final String USER = System.getProperty("database.user");
+//        "admin";
+    static final String PASS = System.getProperty("database.password");
+//        "travel123!";
 
     public List<Hotel> getHotels() {
         List<Hotel> hotels = new ArrayList<>();
