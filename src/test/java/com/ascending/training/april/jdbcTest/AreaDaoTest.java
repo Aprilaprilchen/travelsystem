@@ -24,7 +24,7 @@ public class AreaDaoTest {
             System.out.println(area.getName());
         }
 
-        int expectedNumOfArea = 4;
+        int expectedNumOfArea = 6;
         Assert.assertEquals(expectedNumOfArea, areas.size());
     }
 
@@ -61,7 +61,7 @@ public class AreaDaoTest {
     public void deleteAreaByIdTest(){
         areaDao.deleteAreaById(1);
         List<Area> areas = areaDao.getAreas();
-        Assert.assertEquals(4, areas.size());
+        Assert.assertEquals(6, areas.size());
     }
 
     @After

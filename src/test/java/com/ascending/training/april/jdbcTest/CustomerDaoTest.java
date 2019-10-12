@@ -27,7 +27,7 @@ public class CustomerDaoTest{
             System.out.println(customer.getName());
         };
 
-        int ExpectedNumOfCustomer = 3;
+        int ExpectedNumOfCustomer = 4;
         Assert.assertEquals(ExpectedNumOfCustomer, customers.size());
 
     }

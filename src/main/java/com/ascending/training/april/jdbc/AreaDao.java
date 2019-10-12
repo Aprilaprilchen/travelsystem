@@ -90,19 +90,22 @@ public class AreaDao{
             stmt = conn.createStatement();
 
             String sql;
-            sql = "SELECT FROM areas WHERE name = '" + areaName + "'";
+            sql = "SELECT * FROM areas WHERE name = '" + areaName + "'";
             rs = stmt.executeQuery(sql);
 
-            long id = rs.getLong("id");
-            String name = rs.getString("name");
-            int consumptionLevel = rs.getInt("consumption_level");
-            String location = rs.getString("location");
-            String description = rs.getString("description");
 
-            area.setName(name);
-            area.setConsumptionLevel(consumptionLevel);
-            area.setLocation(location);
-            area.setDescription(description);
+
+            if (rs.next()) {
+                String name = rs.getString("name");
+                int consumptionLevel = rs.getInt("consumption_level");
+                String location = rs.getString("location");
+                String description = rs.getString("description");
+
+                area.setName(name);
+                area.setConsumptionLevel(consumptionLevel);
+                area.setLocation(location);
+                area.setDescription(description);
+            }
 
         }catch(SQLException e){
             e.printStackTrace();
