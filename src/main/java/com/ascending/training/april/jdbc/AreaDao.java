@@ -93,9 +93,8 @@ public class AreaDao{
             sql = "SELECT * FROM areas WHERE name = '" + areaName + "'";
             rs = stmt.executeQuery(sql);
 
-
-
             if (rs.next()) {
+                Long id = rs.getLong(1);
                 String name = rs.getString("name");
                 int consumptionLevel = rs.getInt("consumption_level");
                 String location = rs.getString("location");
@@ -106,7 +105,6 @@ public class AreaDao{
                 area.setLocation(location);
                 area.setDescription(description);
             }
-
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -127,8 +125,8 @@ public class AreaDao{
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "INSERT INTO areas(name, consumptionLevel, location, description) values ('"
-                + areas.getName() + "'," + areas.getConsumptionLevel() + "," +
+            sql = "INSERT INTO areas(name, consumption_level, location, description) values ('"
+                + areas.getName() + "'," + "'" + areas.getConsumptionLevel() + "'," +
                     "'" + areas.getLocation() + "'," + "'" + areas.getDescription() + "'" + ")";
             result = stmt.executeUpdate(sql);
 
@@ -164,10 +162,10 @@ public class AreaDao{
 
 //    delete data
     public int deleteAreaById(long areaId){
-        CustomerDao customerDao = new CustomerDao();
-        customerDao.deleteCustomerByAreaId(areaId);
-        HotelDao hotelDao = new HotelDao();
-        hotelDao.deleteHotelByAreaId(areaId);
+//        CustomerDao customerDao = new CustomerDao();
+//        customerDao.deleteCustomerByAreaId(areaId);
+//        HotelDao hotelDao = new HotelDao();
+//        hotelDao.deleteHotelByAreaId(areaId);
 
         Connection conn = null;
         Statement stmt = null;
@@ -185,9 +183,28 @@ public class AreaDao{
         }catch(SQLException e){
             e.printStackTrace();
         }
-
         return result;
         }
+
+    public int deleteAreaByName(String areaName){
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try{
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+            sql = "DELETE FROM areas WHERE name = '" + areaName + "'";
+            result = stmt.executeUpdate(sql);
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 
 //        原用来测试的main方法

@@ -42,7 +42,7 @@ public class HotelDao {
                 String name = rs.getString("name");
                 String location = rs.getString("location");
                 BigDecimal price = rs.getBigDecimal("price");
-                int comfortLevel = rs.getInt("comfortLevel");
+                int comfortLevel = rs.getInt("comfort_level");
                 int areaId = rs.getInt("area_id");
 
                 Hotel hotel = new Hotel();
@@ -53,15 +53,10 @@ public class HotelDao {
                 hotel.setComfortLevel(comfortLevel);
                 hotels.add(hotel);
             }
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-
             logger.info("This is an exception");
-        }
-
-        finally {
+        } finally {
             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();

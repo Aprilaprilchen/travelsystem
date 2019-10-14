@@ -10,10 +10,25 @@ import java.util.List;
 
 public class AreaDaoTest {
     private AreaDao areaDao;
+    private Area ff;
+    private Long areaId;
+    private String areaName = "FairFax";
 
     @Before
     public void init(){
         areaDao = new AreaDao();
+        ff = new Area();
+        ff.setName(areaName);
+        ff.setLocation("Falls Church");
+        ff.setDescription("Urban");
+        ff.setConsumptionLevel(4);
+        areaDao.insertAreas(ff);
+    }
+
+    @After
+    public void cleanup() {
+        if (ff!=null) areaDao.deleteAreaByName(areaName);
+        areaDao = null;
     }
 
     @Test
@@ -36,36 +51,23 @@ public class AreaDaoTest {
 
     @Test
     public void insertAreaTest(){
-        Area va = new Area();
-        va.setLocation("Crystal City");
-        va.setDescription("Downtown");
-        va.setConsumptionLevel(4);
-        va.setName("VA");
-        //va.setId(100);
-        areaDao.insertAreas(va);
-        Area area = areaDao.getAreaByName("VA");
+        Area area = areaDao.getAreaByName(areaName);
         Assert.assertNotNull(area);
     }
 
     @Test
     public void updateAreaTest(){
-        Area area = new Area();
+        Area area = areaDao.getAreaByName(areaName);
         area.setName("DDD");
-//        area2.setId(2);
         areaDao.updateArea(area);
         Area area2 = areaDao.getAreaByName("DDD");
         Assert.assertNotNull(area2);
     }
 
     @Test
-    public void deleteAreaByIdTest(){
-        areaDao.deleteAreaById(1);
+    public void deleteAreaByNameTest(){
+        areaDao.deleteAreaByName(areaName);
         List<Area> areas = areaDao.getAreas();
-        Assert.assertEquals(6, areas.size());
-    }
-
-    @After
-    public void cleanup() {
-        areaDao = null;
+        Assert.assertEquals(5, areas.size());
     }
 }
