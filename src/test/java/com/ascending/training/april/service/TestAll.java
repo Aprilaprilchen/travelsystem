@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
                 AreaServiceTest.class,
                 CustomerServiceTest.class,
                 HotelServiceTest.class,
-                FileServiceTest.class,
-                MessageServiceTest.class
+//                FileServiceTest.class,
+//                MessageServiceTest.class
                 })
 
 public class TestAll {
