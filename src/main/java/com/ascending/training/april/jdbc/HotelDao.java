@@ -1,6 +1,7 @@
 package com.ascending.training.april.jdbc;
 
 import com.amazonaws.services.dynamodbv2.xspec.S;
+import com.ascending.training.april.model.Customer;
 import com.ascending.training.april.model.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,6 +72,33 @@ public class HotelDao {
         return hotels;
     }
 
+    public int insertHotel(Hotel hotel){
+        Connection conn = null;
+        Statement stmt = null;
+        int result = 0;
+
+        try {
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            String sql;
+            int areaId = 1;
+
+            sql = "INSERT INTO hotels(name, location, price, comfort_level, area_id) values ('"
+                    + hotel.getName() + "','" + hotel.getLocation() + "','" + hotel.getPrice() + "','" +
+                    hotel.getComfortLevel() + "','" + areaId + "')";
+            result = stmt.executeUpdate(sql);
+
+        }catch (SQLException e){
+            logger.info("This is an exception");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public int deleteHotelByAreaId(long areaId){
 
         Connection conn = null;
@@ -94,7 +122,7 @@ public class HotelDao {
     }
 
 
-    public int deleteHotelByAreaName(String areaName){
+    public int deleteHotelByName(String hotelName){
 
         Connection conn = null;
         Statement stmt = null;
@@ -106,22 +134,21 @@ public class HotelDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "DELETE FROM hotels WHERE area_name = '" + areaName + "'";
+            sql = "DELETE FROM hotels WHERE area_name = '" + hotelName + "'";
             result = stmt.executeUpdate(sql);
 
         }catch(SQLException e){
             e.printStackTrace();
         }
-
         return result;
     }
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        HotelDao hotelDao = new HotelDao();
 //        List<Hotel> hotels = hotelDao.getHotels();
 //
 //        for (Hotel hotel : hotels) {
 //        System.out.println(hotel.getName());
 //        }
-//    }
+    }
 }

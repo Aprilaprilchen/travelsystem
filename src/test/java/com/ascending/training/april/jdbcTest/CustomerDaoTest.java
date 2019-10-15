@@ -53,7 +53,10 @@ public class CustomerDaoTest{
         for (Customer customer : customers){
             System.out.println(customer.getName());
         }
-        int ExpectedNumOfCustomer = 5;
+        //for test:
+        int ExpectedNumOfCustomer = 1;
+        //for me:
+//        int ExpectedNumOfCustomer = 5;
         Assert.assertEquals(ExpectedNumOfCustomer, customers.size());
     }
 
