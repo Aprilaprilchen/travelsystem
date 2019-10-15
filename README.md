@@ -1,6 +1,6 @@
 ## Maven clean compile Command Line
 ```bash
-mvn clean compile flyway:migrate -Ddburl=${DB_URL} -DdbPort=5432 -DdbName=${DB_NAME} -DdbUser=${DB_USER} -DdbPassword=${DB_PASSWORD}
+mvn clean compile flyway:migrate -DdbUrl=${DB_URL} -DdbPort=5432 -DdbName=${DB_NAME} -DdbUser=${DB_USER} -DdbPassword=${DB_PASSWORD}
 ```
 
 ## Unit Test Command Line
