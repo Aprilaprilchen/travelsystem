@@ -134,7 +134,7 @@ public class HotelDao {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "DELETE FROM hotels WHERE area_name = '" + hotelName + "'";
+            sql = "DELETE FROM hotels WHERE name = '" + hotelName + "'";
             result = stmt.executeUpdate(sql);
 
         }catch(SQLException e){

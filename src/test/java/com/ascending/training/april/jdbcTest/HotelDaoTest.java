@@ -28,7 +28,7 @@ public class HotelDaoTest {
         hotelName = "CytHouse";
         hotel.setName(hotelName);
         hotel.setLocation("Falls Church");
-        hotel.setPrice(new BigDecimal(100000));
+        hotel.setPrice(new BigDecimal(1000));
         hotel.setComfortLevel(10);
         hotelDao.insertHotel(hotel);
     }
@@ -40,10 +40,7 @@ public class HotelDaoTest {
         for (Hotel hotel : hotels){
             System.out.println(hotel.getName());
         }
-//for me:
-//        int ExpectedNumOfHotel = 6;
-//for test:
-          int ExpectedNumOfHotel = 1;
+        int ExpectedNumOfHotel = 6;
         Assert.assertEquals(ExpectedNumOfHotel, hotels.size());
     }
 

@@ -38,10 +38,7 @@ public class AreaDaoTest {
         for (Area area : areas) {
             System.out.println(area.getName());
         }
-//     for me:
-//        int expectedNumOfArea = 6;
-//     for test:
-        int expectedNumOfArea = 1;
+        int expectedNumOfArea = 6;
         Assert.assertEquals(expectedNumOfArea, areas.size());
     }
 
@@ -70,9 +67,6 @@ public class AreaDaoTest {
     public void deleteAreaByNameTest(){
         areaDao.deleteAreaByName(areaName);
         List<Area> areas = areaDao.getAreas();
-//        for test:
-        Assert.assertEquals(1, areas.size());
-//        for me:
-//        Assert.assertEquals(5, areas.size());
+        Assert.assertEquals(5, areas.size());
     }
 }
