@@ -1,0 +1,5 @@
+## Unit Test Command Line
+
+```bash
+mvn test -Ddatabase.driver=org.postgresql.Driver -Ddatabase.dialect=org.hibernate.dialect.PostgreSQL9Dialect -Ddatabase.url=jdbc:postgresql://${DB_URL}:5432/${DB_NAME} -Ddatabase.user=${DB_USER}  -Ddatabase.password=${DB_PASSWORD} -Dlogging.level.org.springframework=INFO -Dlogging.level.com.ascending=TRACE -Dserver.port=8080 -Dsecret.key=AA123
+```
