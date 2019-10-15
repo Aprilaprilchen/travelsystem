@@ -60,7 +60,8 @@ public class FileServiceMockAWSTest {
         MockitoAnnotations.initMocks(this);
 
         fakeFileUrl = new URL("http://www.fakeQueueUrl.com/abc/123/fake");
-        File file = new File("/Users/april/Documents/work/product pics/swift.jpg");
+        File file = new File("./cyt.jpg");
+//        File file = new File("/Users/april/Documents/work/product pics/swift.jpg");
         FileInputStream input = new FileInputStream(file);
         multipartFile = new MockMultipartFile("file", file.getName(), "image/jpg", IOUtils.toByteArray(input));
         path = System.getProperty("user.dir") + File.separator + "temp";

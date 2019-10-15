@@ -31,7 +31,7 @@ public class FileServiceTest {
     @Autowired AmazonS3 amazonS3;
     @Autowired Logger logger;
     Bucket bucket;
-    String fileName = "swift.jpg";
+    String fileName = "cyt.jpg";
     MultipartFile multipartFile;
     String path;
     String bucketName = "cytcute";
@@ -40,7 +40,8 @@ public class FileServiceTest {
     public void setUp()throws IOException {
         if (!amazonS3.doesBucketExistV2(bucketName)) bucket = fileService.createBucket(bucketName);
 
-        File file = new File("/Users/april/Documents/work/product pics/swift.jpg");
+//        File file = new File("/Users/april/Documents/work/product pics/swift.jpg");
+        File file = new File("./cyt.jpg");
         FileInputStream input = new FileInputStream(file);
         multipartFile = new MockMultipartFile("file", file.getName(), "image/jpg", input);
         path = System.getProperty("user.dir") + File.separator + "temp";
