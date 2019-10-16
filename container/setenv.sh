@@ -1,0 +1,11 @@
+export JAVA_OPTS="$JAVA_OPTS -Ddatabase.driver=org.postgresql.Driver
+export JAVA_OPTS="$JAVA_OPTS -Ddatabase.dialect=org.hibernate.dialect.PostgreSQL9Dialect
+export JAVA_OPTS="$JAVA_OPTS -Ddatabase.url=jdbc:postgresql://localhost:5434/travel_db
+export JAVA_OPTS="$JAVA_OPTS -Ddatabase.user=admin
+export JAVA_OPTS="$JAVA_OPTS -Ddatabase.password=travel123!
+export JAVA_OPTS="$JAVA_OPTS -Dlogging.level.org.springframework=INFO
+export JAVA_OPTS="$JAVA_OPTS -Dlogging.level.com.ascending=TRACE
+export JAVA_OPTS="$JAVA_OPTS -Dserver.port=8080
+export JAVA_OPTS="$JAVA_OPTS -Dsecret.key=travel123!@#
+export JAVA_OPTS="$JAVA_OPTS -Daws.accessKeyId=AKIAIA4IDB6Q2NU6WZHA
+export JAVA_OPTS="$JAVA_OPTS -Daws.secretKey=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
