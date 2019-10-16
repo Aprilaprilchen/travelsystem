@@ -7,8 +7,6 @@ ENV DB_PORT = ""
 ENV DB_NAME = ""
 ENV DB_USER = ""
 ENV DB_PASSWORD = ""
-ENV AWS_ID = ""
-ENV AWS_KEY = ""
 
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 COPY ./*.war /usr/local/tomcat/webapps/ROOT.war
