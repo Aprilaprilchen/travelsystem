@@ -17,6 +17,8 @@ import java.io.IOException;
 public class SecurityFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(getClass());
     private static String AUTH_URI = "/auth";
+    private static String ALLOWED_URL = "/test";
+
     @Override
     public void init(FilterConfig filterConfig) {
         // TODO Auto-generated method stub
@@ -39,7 +41,7 @@ public class SecurityFilter implements Filter {
         int statusCode = HttpServletResponse.SC_UNAUTHORIZED;
         String uri = req.getRequestURI();
         String verb = req.getMethod();
-        if(uri.equalsIgnoreCase(AUTH_URI))return HttpServletResponse.SC_ACCEPTED;
+        if(uri.equalsIgnoreCase(AUTH_URI)|| uri.equalsIgnoreCase(ALLOWED_URL))return HttpServletResponse.SC_ACCEPTED;
 
         try {
             String token = req.getHeader("Authorization").replaceAll("^(.*?) ", "");
